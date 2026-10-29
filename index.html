@@ -1,0 +1,853 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aziza Fancy Store</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --pink: #d94f8c;
+            --pink-dark: #b83270;
+            --pink-light: #fff1f7;
+            --text: #34313a;
+            --muted: #77717b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 85px;
+        }
+
+        body {
+            margin: 0;
+           
+            background: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        /* NAVBAR */
+        .bg-pink {
+            background: var(--pink);
+        }
+
+        .navbar {
+            padding: 10px 0;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff !important;
+            font-weight: 700;
+            font-size: 1.15rem;
+            white-space: nowrap;
+        }
+
+        .logo {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: #fff;
+            padding: 3px;
+            
+        }
+
+        .navbar-pink .nav-link {
+            color: #fff !important;
+            font-weight: 600;
+            padding: 9px 12px !important;
+            border-radius: 20px;
+            transition: background .2s ease;
+        }
+
+        .navbar-pink .nav-link:hover,
+        .navbar-pink .nav-link:focus {
+            background: rgba(255, 255, 255, .18);
+        }
+
+        .navbar-toggler {
+            border-color: rgba(255,255,255,.7);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 .2rem rgba(255,255,255,.25);
+        }
+
+        
+
+        /* TOMBOL */
+        .btn-pink {
+            color: #fff;
+            background: var(--pink);
+            border: 1px solid var(--pink);
+            border-radius: 25px;
+            padding: 10px 22px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            
+        }
+
+        .btn-pink:hover {
+            color: #fff;
+            background: var(--pink-dark);
+            border-color: var(--pink-dark);
+            transform: translateY(-1px);
+        }
+
+        /* JUDUL BAGIAN */
+        .section-heading {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .section-heading h2 {
+            font-weight: 750;
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            margin: 0 auto;
+            max-width: 700px;
+        }
+
+        .pink-section {
+            background: var(--pink-light);
+        }
+
+        /* HERO */
+        .hero {
+            padding: 65px 0 70px;
+        }
+
+        .hero-logo-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-logo {
+            width: 100%;
+            max-width: 340px;
+            height: 300px;
+            object-fit: contain;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            color: #625d66;
+        }
+
+        /* KARTU PRODUK */
+        .product-card {
+            height: auto;
+            border: 1px solid #f1dce6;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 5px 18px rgba(90, 40, 65, .07);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 26px rgba(90, 40, 65, .12);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+            background: #f8edf2;
+        }
+
+        .product-card .card-body {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .product-card .card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            min-height: 48px;
+        }
+
+        .product-card .card-text {
+            color: var(--muted);
+            font-size: .94rem;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            color: var(--pink-dark);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 10px 0 14px;
+        }
+
+        /* VIDEO */
+        .video-card {
+            height: 100%;
+            overflow: hidden;
+            border: 1px solid #f1dce6;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 5px 18px rgba(90, 40, 65, .07);
+        }
+
+        .video-card video {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            display: block;
+            object-fit: cover;
+            background: #f8edf2;
+        }
+
+        .video-card .card-body {
+            padding: 15px 10px;
+        }
+
+        /* RATING / AJAKAN ULASAN */
+        .review-box {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 18px;
+            background: #fff;
+            border: 1px solid #f1dce6;
+            text-align: center;
+        }
+
+        .review-stars {
+            color: #f0a629;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+        }
+
+        /* KONTAK */
+        .contact-card {
+            height: 100%;
+            padding: 28px 18px;
+            text-align: center;
+            border: 1px solid #f1dce6;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 5px 18px rgba(90, 40, 65, .06);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .contact-card p {
+            color: var(--muted);
+            overflow-wrap: anywhere;
+            margin-bottom: 0;
+        }
+
+        .map-frame {
+            width: 100%;
+            min-height: 360px;
+            border: 0;
+            border-radius: 16px;
+            box-shadow: 0 5px 18px rgba(90, 40, 65, .1);
+        }
+
+        /* FOOTER */
+        .site-footer {
+            background: var(--pink);
+            color: #fff;
+        }
+
+        .site-footer h3 {
+            font-size: 1.25rem;
+            font-weight: 750;
+            margin-bottom: 16px;
+        }
+
+        .site-footer p,
+        .site-footer li {
+            color: rgba(255,255,255,.93);
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,.35);
+            text-align: center;
+            padding: 18px 12px;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-nav {
+                padding-top: 12px;
+            }
+
+            .navbar-pink .nav-link {
+                padding-left: 10px !important;
+            }
+
+            .hero {
+                padding: 40px 0 50px;
+            }
+
+            .hero-logo {
+                max-width: 260px;
+                height: 240px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .navbar-brand {
+                font-size: 1rem;
+            }
+
+            .logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .hero {
+                text-align: center;
+            }
+
+            .hero-logo {
+                height: 220px;
+                margin-bottom: 20px;
+            }
+
+            .product-image {
+                height: 250px;
+            }
+
+            .review-box {
+                padding: 22px 16px;
+            }
+
+            .map-frame {
+                min-height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-pink bg-pink sticky-top shadow-sm">
+        <div class="container">
+            <a href="#beranda" class="navbar-brand">
+                <img class="logo" src="gambar/logo.jpeg" alt="Logo Aziza Fancy Store">
+                <span>Aziza Fancy Store</span>
+            </a>
+
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+                aria-controls="navbarMenu" aria-expanded="false" aria-label="Buka menu navigasi">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="#beranda" class="nav-link">Beranda</a></li>
+                    <li class="nav-item"><a href="#produk" class="nav-link">Produk</a></li>
+                    <li class="nav-item"><a href="#video" class="nav-link">Video</a></li>
+                    <li class="nav-item"><a href="#ulasan" class="nav-link">Rating</a></li>
+                    <li class="nav-item"><a href="#bestseller" class="nav-link">Bestseller</a></li>
+                    <li class="nav-item"><a href="#kontak" class="nav-link">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- HERO / BERANDA -->
+        <section class="hero" id="beranda">
+            <div class="container">
+                <div class="row align-items-center g-4">
+                    <div class="col-md-4 hero-logo-wrap">
+                        <img src="gambar/logoo.jpeg" class="hero-logo" alt="Logo Aziza Fancy Store">
+                    </div>
+
+                    <div class="col-md-8">
+                        <p class="text-uppercase fw-bold mb-2" style="color: var(--pink-dark);">
+                            Fashion • Beauty • Home Decor • Accessories
+                        </p>
+                        <h1 class="fw-bold">Selamat datang di <span style="color: var(--pink-dark);">Aziza Fancy Store</span> </h1>
+                        <p>
+                            Aziza Fancy Store hadir untuk menemani hari-harimu dengan berbagai pilihan produk yang cantik, menarik, dan kekinian. 💗 Kami menyediakan koleksi fashion, beauty, home decor, dan accessories untuk melengkapi kebutuhan serta gaya favoritmu.
+                        </p>
+                        <p>
+                            Temukan produk pilihan dengan desain menarik dan warna yang memanjakan mata, mulai dari outfit manis, produk kecantikan, dekorasi rumah yang estetik, hingga aksesori lucu. 🎀🌷
+                        </p>
+                        <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." class="btn-pink text-center" data-wa-msg="Halo Aziza Fancy Store, saya ingin bertanya tentang produk." target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-whatsapp"></i> Hubungi Kami
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUK -->
+        <section class="pink-section py-5" id="produk">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Produk Aziza Fancy Store</h2>
+                    <p>Temukan berbagai pilihan fashion, beauty, home decor, dan accessories favoritmu. 🌷</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-sm-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="gambar/fashion-aziza.jpeg" class="product-image" alt="Koleksi fashion Aziza Fancy Store">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">🎀 Pretty in Pink! 💗</h3>
+                                <p class="card-text text-center">Tampil manis dan elegan dengan koleksi fashion pilihan. Detail cantik dan desain feminin.</p>
+                                <div class="product-price text-center">Rp70.000</div>
+                                <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk" class="btn-pink text-center">Tanya Produk</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="gambar/beauty-aziza.jpeg" class="product-image" alt="Produk beauty Aziza Fancy Store">
+                            <div class="card-body">
+                                <h3 class="card-title">✨ Beauty Favorites</h3>
+                                <p class="card-text">Temukan pilihan produk kecantikan untuk melengkapi rutinitasmu, mulai dari skincare hingga makeup favorit.</p>
+                                <div class="product-price text-center">Rp150.000</div>
+                                <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." class="btn-pink text-center" data-wa-msg="Halo Aziza Fancy Store, saya ingin bertanya tentang produk." target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-whatsapp"></i>  Tanya Produk
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="gambar/home-decor.jpeg" class="product-image" alt="Dekorasi rumah Aziza Fancy Store">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">🏡 Elegant Home Decor</h3>
+                                <p class="card-text text-center">Percantik ruangan dengan pilihan dekorasi rumah, bunga artificial, hiasan, dan ornamen yang estetik. 🌷</p>
+                                <div class="product-price text-center">Rp30.000</div>
+                                <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." class="btn-pink text-center" data-wa-msg="Halo Aziza Fancy Store, saya ingin bertanya tentang produk." target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-whatsapp"></i> Tanya Produk
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="gambar/accessories.jpeg" class="product-image" alt="Aksesori Aziza Fancy Store">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">🎀 Fluffy Cute Accessories</h3>
+                                <p class="card-text text-center">Lengkapi penampilan dengan aksesori lucu dan warna-warni yang cocok untuk menemani gaya sehari-hari. 🐰</p>
+                                <div class="product-price text-center">Rp15.000</div>
+                                <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." class="btn-pink text-center" data-wa-msg="Halo Aziza Fancy Store, saya ingin bertanya tentang produk." target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-whatsapp"></i> Tanya Produk 
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="gambar/tebag.jpeg" class="product-image" alt="Koleksi fashion Aziza Fancy Store">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">Totebag Gemas🛒</h3>
+                                <p class="card-text text-center">Mau tampil cute tanpa ribet? Wajib banget punya tas ini! Modelnya gemas, dan cocok buat berbagai outfit kamu.</p>
+                                <div class="product-price text-center">Rp50.000</div>
+                                <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." class="btn-pink text-center" data-wa-msg="Halo Aziza Fancy Store, saya ingin bertanya tentang produk." target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-whatsapp"></i> Tanya Produk
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="gambar/welldecor.jpeg" class="product-image" alt="Produk beauty Aziza Fancy Store">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">Walldecor Aesthetic!🖼️</h3>
+                                <p class="card-text text-center">Bikin ruangan makin cantik & aesthetic dengan pilihan walldecor yang gemes banget! 🤎🫶🏻</p>
+                                <div class="product-price text-center">R35.000</div>
+                                <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." class="btn-pink text-center" data-wa-msg="Halo Aziza Fancy Store, saya ingin bertanya tentang produk." target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-whatsapp"></i>Tanya Produk
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="gambar/buket.jpeg" class="product-image" alt="Koleksi fashion Aziza Fancy Store">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">Flower Bouquet💐🌸</h3>
+                                <p class="card-text text-center">Flower Bouquet cantik dari Aziza Fancy Store 🎀🌷 Cocok untuk ulang tahun, anniversary, wisuda, dll🎁💕</p>
+                                <div class="product-price text-center">Rp75.000</div>
+                                <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." class="btn-pink text-center" data-wa-msg="Halo Aziza Fancy Store, saya ingin bertanya tentang produk." target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-whatsapp"></i>Tanya Produk
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="gambar/rajut.jpeg" class="product-image" alt="Produk beauty Aziza Fancy Store">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">Pink Knit Collection 🌸🎀</h3>
+                                <p class="card-text text-center">Cardigan Rajut Pink Series dari Aziza Fancy Store! 🌸✨ Desain cantik dengan detail menggemaskan 🛍️💕</p>
+                                <div class="product-price text-center">Rp85.000</div>
+                                <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." class="btn-pink text-center" data-wa-msg="Halo Aziza Fancy Store, saya ingin bertanya tentang produk." target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-whatsapp"></i>Tanya Produk
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="gambar/mirror.jpeg" class="product-image" alt="Produk beauty Aziza Fancy Store">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">Standing Mirror 🪞💗</h3>
+                                <p class="card-text text-center">Bikin sudut kamar makin estetik dengan standing mirror warna pastel yang unik dan cantik! ✨</p>
+                                <div class="product-price text-center">Rp200.000</div>
+                                <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." class="btn-pink text-center" data-wa-msg="Halo Aziza Fancy Store, saya ingin bertanya tentang produk." target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-whatsapp"> </i> Tanya Produk
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="gambar/parfume.jpeg" class="product-image" alt="Produk beauty Aziza Fancy Store">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">Parfume 🧴🎀</h3>
+                                <p class="card-text text-center">Wangi sepanjang hari, makin percaya diri! Temukan parfum favoritmu di Aziza Fancy Store.💕</p>
+                                <div class="product-price text-center">Rp65.000</div>
+                                <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." class="btn-pink text-center" data-wa-msg="Halo Aziza Fancy Store, saya ingin bertanya tentang produk." target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-whatsapp"></i> Tanya Produk
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="gambar/makeup.jpeg" class="product-image" alt="Produk beauty Aziza Fancy Store">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">Makeup & Beauty Products 💄</h3>
+                                <p class="card-text text-center">Lengkapi koleksi makeup-mu dengan produk cantik yang siap menemani rutinitas harianmu! 💖</p>
+                                <div class="product-price text-center">Rp135.000</div>
+                                <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." class="btn-pink text-center" data-wa-msg="Halo Aziza Fancy Store, saya ingin bertanya tentang produk." target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-whatsapp"> </i> Tanya Produk
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="gambar/pouch.jpeg" class="product-image" alt="Produk beauty Aziza Fancy Store">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">Pouch Lucu 👝</h3>
+                                <p class="card-text text-center">Simpan barang-barang kecilmu dengan pouch gemas yang praktis dan stylish! 🌷</p>
+                                <div class="product-price text-center">Rp135.000</div>
+                                <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." class="btn-pink text-center" data-wa-msg="Halo Aziza Fancy Store, saya ingin bertanya tentang produk." target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-whatsapp"> </i> Tanya Produk
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="gambar/botol.jpeg" class="product-image" alt="Produk beauty Aziza Fancy Store">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">Botol Minum & Tumbler 🥤</h3>
+                                <p class="card-text text-center">Bawa minuman favoritmu ke mana saja dengan tumbler lucu yang praktis untuk aktivitas sehari-hari! 🩵</p>
+                                <div class="product-price text-center">Rp40.000</div>
+                                <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." class="btn-pink text-center" data-wa-msg="Halo Aziza Fancy Store, saya ingin bertanya tentang produk." target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-whatsapp"> </i> Tanya Produk
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="gambar/cute.jpeg" class="product-image" alt="Produk beauty Aziza Fancy Store">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">Cute Stationery ✏️</h3>
+                                <p class="card-text text-center">🎀 Alat tulis gemoy, bikin semangat belajar auto naik! 📚💗 Sekali lihat, langsung pengen borong! ✨</p>
+                                <div class="product-price text-center">Rp30.000</div>
+                                <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." class="btn-pink text-center" data-wa-msg="Halo Aziza Fancy Store, saya ingin bertanya tentang produk." target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-whatsapp"> </i> Tanya Produk
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="gambar/case.jpeg" class="product-image" alt="Produk beauty Aziza Fancy Store">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">Pencil Case 🩷🖍️</h3>
+                                <p class="card-text text-center">👀 Pencinta barang lucu merapat! 💕 Pencil case gemas dengan banyak pilihan model.🎀✨</p>
+                                <div class="product-price text-center">Rp35.000</div>
+                                <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." class="btn-pink text-center" data-wa-msg="Halo Aziza Fancy Store, saya ingin bertanya tentang produk." target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-whatsapp"> </i> Tanya Produk
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="gambar/tas.jpeg" class="product-image" alt="Produk beauty Aziza Fancy Store">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">Tas Ransel 🎒🌸</h3>
+                                <p class="card-text text-center">💗 Tas kece buat nemenin setiap langkahmu! ✨ Stylish, praktis, dan cocok buat sekolah.🎒🌷</p>
+                                <div class="product-price text-center">Rp135.000</div>
+                                <a href="https://wa.me/6285380046511?text=Halo%20Aziza%20Fancy%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." class="btn-pink text-center" data-wa-msg="Halo Aziza Fancy Store, saya ingin bertanya tentang produk." target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-whatsapp"> </i> Tanya Produk 
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- VIDEO -->
+        <section class="py-5" id="video">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Intip Koleksi Kami 🎥</h2>
+                    <p>Lihat lebih dekat berbagai koleksi dari Aziza Fancy Store.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-6 col-lg-3">
+                        <div class="video-card">
+                            <video controls preload="metadata" playsinline>
+                                <source src="vidio/fashion.mp4" type="video/mp4">
+                                Browser kamu tidak mendukung video.
+                            </video>
+                            <div class="card-body text-center fw-semibold">Fashion Aziza Fancy Store</div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3">
+                        <div class="video-card">
+                            <video controls preload="metadata" playsinline>
+                                <source src="vidio/produk.mp4" type="video/mp4">
+                                Browser kamu tidak mendukung video.
+                            </video>
+                            <div class="card-body text-center fw-semibold">Produk Beauty</div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3">
+                        <div class="video-card">
+                            <video controls preload="metadata" playsinline>
+                                <source src="vidio/home-decor.mp4" type="video/mp4">
+                                Browser kamu tidak mendukung video.
+                            </video>
+                            <div class="card-body text-center fw-semibold">Home Decor</div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3">
+                        <div class="video-card">
+                            <video controls preload="metadata" playsinline>
+                                <source src="vidio/accessories.mp4" type="video/mp4">
+                                Browser kamu tidak mendukung video.
+                            </video>
+                            <div class="card-body text-center fw-semibold">Accessories</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RATING / ULASAN -->
+        <section class="pink-section py-5" id="ulasan">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Ulasan & Kepuasan Pelanggan 💗</h2>
+                    <p>Pendapat pelanggan membantu kami terus meningkatkan pelayanan.</p>
+                </div>
+                <div class="review-box">
+                    <div class="review-stars" aria-label="Lima bintang">★★★★★</div>
+                    <h3 class="h5 fw-bold mt-2">Punya pengalaman belanja di Aziza Fancy Store?</h3>
+                    <p class="text-muted mb-0">Bagikan penilaian dan masukanmu melalui kontak toko. Ulasan asli pelanggan bisa ditambahkan di bagian ini nanti.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="container mt-4 mb-3">
+
+            <h2 class="text-center mt-5 fw-bold">
+                Produk Best Seller
+            </h2>
+
+            <p class="mt-3">
+                Fashion
+            </p>
+
+            <div class="progres align-items-center" role="progressbar" arial-label="Example with label" aria-valuenow="25" aria-valuenow="0" aria-valuemax="100">
+                <div class="progress-bar bg-pink text-white" style="width: 85%">85%</div>
+            </div>
+
+            <p class="mt-3">
+                Beauty
+            </p>
+
+            <div class="progres align-items-center" role="progressbar" arial-label="Example with label" aria-valuenow="25" aria-valuenow="0" aria-valuemax="100">
+                <div class="progress-bar bg-pink text-white" style="width: 80%">80%</div>
+            </div>
+
+            <p class="mt-3">
+                Home Decor
+            </p>
+
+            <div class="progres align-items-center" role="progressbar" arial-label="Example with label" aria-valuenow="25" aria-valuenow="0" aria-valuemax="100">
+                <div class="progress-bar bg-pink text-white" style="width: 75%">75%</div>
+            </div>
+
+            <p class="mt-3">
+                Accessories
+            </p>
+
+            <div class="progres align-items-center" role="progressbar" arial-label="Example with label" aria-valuenow="25" aria-valuenow="0" aria-valuemax="100">
+                <div class="progress-bar bg-pink text-white" style="width: 70%">70%</div>
+            </div>
+
+        </div>
+
+        <!-- KONTAK -->
+        <section class="py-5" id="kontak">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Kontak Kami</h2>
+                    <p>Silakan hubungi kami untuk informasi produk dan pemesanan. 💌</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="contact-card">
+                            <div class="contact-icon">📍</div>
+                            <h3>Alamat</h3>
+                            <p>Jl. AH Nasution No.213, Yosodadi, Kec. Metro Tim., Kota Metro, Lampung 34381</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="contact-card">
+                            <div class="contact-icon">☎️</div>
+                            <h3>Telepon / WhatsApp</h3>
+                            <p>+62 853-8004-6511</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="contact-card">
+                            <div class="contact-icon">✉️</div>
+                            <h3>Email</h3>
+                            <p>azizafancystore@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOKASI -->
+        <section class="pb-5" id="lokasi">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Lokasi Aziza Fancy Store 📍</h2>
+                    <p>Gunakan peta berikut untuk melihat lokasi toko.</p>
+                </div>
+
+                <iframe
+                    class="map-frame"
+                    title="Peta lokasi Aziza Fancy Store"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.9662247274473!2d105.32504367425162!3d-5.109145951752813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40bd7803b3c539%3A0x7c8f9aaa78a15e05!2sAziza%20Fancy%20Store!5e0!3m2!1sid!2sid!4v1793236367752!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>"
+                    
+                </iframe>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-md-5">
+                    <h3>Aziza Fancy Store 🎀</h3>
+                    <p>Temukan berbagai koleksi fashion, beauty,
+                    <br>home decor, dan accessories untuk 
+                    <br>melengkapi gaya serta kebutuhanmu.</p>
+                </div>
+
+                <div class="col-md-3">
+                    <h3>Menu</h3>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#produk">Produk Kami</a></li>
+                        <li class="mb-2"><a href="#video">Video Koleksi</a></li>
+                        <li class="mb-2"><a href="#ulasan">Rating & Ulasan</a></li>
+                        <li class="mb-2"><a href="#bestseller">Prodak Best Seller</a></li>
+                        <li class="mb-2"><a href="#kontak">Kontak Kami</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <h3>Alamat Kami</h3>
+                    <p>Jl. AH Nasution No.213, Yosodadi, Kec. Metro Tim., Kota Metro, Lampung 34381</p>
+                    <a class="btn btn-light rounded-pill fw-semibold" href="https://www.google.com/maps/place/Aziza+Fancy+Store/@-5.1091513,105.3276186,17z/data=!3m1!4b1!4m6!3m5!1s0x2e40bd7803b3c539:0x7c8f9aaa78a15e05!8m2!3d-5.1091513!4d105.3276186!16s%2Fg%2F11s0zcx654?entry=ttu&g_ep=EgoyMDI2MTAyNy4wIKXMDSoASAFQAw%3D%3D" style="color: var(--pink-dark);">Lihat Lokasi</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="mb-0 fw-semibold">Copyright &copy; 2026 Dhiaz Novian Ivana. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
